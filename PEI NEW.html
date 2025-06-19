@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parity Empowerment Initiative</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            background-color: #f5f7fa;
+        }
+        
+        body {
+            background: linear-gradient(to bottom, #ffffff, #f0f4ff);
+            color: #333;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 5%;
+            background: linear-gradient(135deg, #1a3a8f, #0d1b3a);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-text {
+            color: white;
+            font-size: 1.2em;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .payment-options {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background-color: rgba(255,255,255,0.9);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .support-text {
+            font-weight: 600;
+            color: #1a3a8f;
+            font-size: 0.9em;
+        }
+        
+        .card-icons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .card-icon {
+            height: 20px;
+            width: auto;
+            filter: grayscale(30%);
+            transition: filter 0.3s ease;
+        }
+        
+        .card-icon:hover {
+            filter: grayscale(0%);
+        }
+        
+        .donate-btn {
+            background-color: #1a3a8f;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 0.9em;
+        }
+        
+        .donate-btn:hover {
+            background-color: #0d1b3a;
+        }
+        
+        .nav-bar {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+            position: relative;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1em;
+            padding: 8px 12px;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .nav-links a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+        }
+        
+        .nav-links li::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links li:hover::after {
+            width: 100%;
+        }
+        
+        main {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+        
+        section {
+            padding: 80px 5%;
+            min-height: 100vh;
+            scroll-margin-top: 80px;
+        }
+        
+        #Main {
+            background: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            color: white;
+            position: relative;
+        }
+        
+        #Main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+        }
+        
+        .empowerment-slider {
+            width: 100%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .slider-container {
+            display: flex;
+            width: 600%;
+            height: 500px;
+            animation: slide 30s infinite;
+        }
+
+        .slide {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 20px;
+            font-size: 1.5em;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            12.5% { transform: translateX(0); }
+            16.66% { transform: translateX(-16.66%); }
+            29.16% { transform: translateX(-16.66%); }
+            33.32% { transform: translateX(-33.32%); }
+            45.82% { transform: translateX(-33.32%); }
+            49.98% { transform: translateX(-49.98%); }
+            62.48% { transform: translateX(-49.98%); }
+            66.64% { transform: translateX(-66.64%); }
+            79.14% { transform: translateX(-66.64%); }
+            83.3% { transform: translateX(-83.3%); }
+            95.8% { transform: translateX(-83.3%); }
+            100% { transform: translateX(0); }
+        }
+        
+        #Main > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        #Support {
+            background-color: #f8f9fa;
+            cursor: pointer;
+        }
+        
+        #About {
+            background-color: white;
+        }
+        
+        #ContactUs {
+            background-color: #e6e9f0;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            margin-bottom: 40px;
+            color: #1a3a8f;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #1a3a8f, #0d1b3a);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .image-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .image-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .image-container {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .image-card:hover .image-container img {
+            transform: scale(1.1);
+        }
+        
+        .image-info {
+            padding: 20px;
+        }
+        
+        .image-title {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #1a3a8f;
+        }
+        
+        .slogan {
+            font-family: Arial, sans-serif;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            margin: 20px 0 40px;
+            padding: 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .content-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+        
+        .content-box p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .content-box b {
+            color: #1a3a8f;
+        }
+        
+        .social-media-section {
+            background-color: transparent;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .social-icons-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .social-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            width: 100px;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+        }
+        
+        .icon {
+            width: 60px;
+            height: 60px;
+            padding: 15px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon span {
+            color: #333;
+            font-weight: 600;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+        
+        .facebook .icon {
+            background-color: #3b5998;
+            fill: white;
+        }
+        .facebook:hover .icon {
+            background-color: #2d4373;
+        }
+        .facebook:hover span {
+            color: #3b5998;
+        }
+        
+        .twitter .icon {
+            background-color: #1da1f2;
+            fill: white;
+        }
+        .twitter:hover .icon {
+            background-color: #0d8ecf;
+        }
+        .twitter:hover span {
+            color: #1da1f2;
+        }
+        
+        .tiktok .icon {
+            background-color: #000000;
+            fill: white;
+        }
+        .tiktok:hover .icon {
+            background-color: #333333;
+        }
+        .tiktok:hover span {
+            color: #000000;
+        }
+        
+        .linkedin .icon {
+            background-color: #0077b5;
+            fill: white;
+        }
+        .linkedin:hover .icon {
+            background-color: #005582;
+        }
+        .linkedin:hover span {
+            color: #0077b5;
+        }
+     
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            min-height: 150px;
+        }
+        button {
+            background: linear-gradient(135deg, #1a3a8f, #0d1b3a);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .payment-options {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .support-text {
+            margin-right: 10px;
+        }
+        .card-icons {
+            display: flex;
+            gap: 10px;
+        }
+        .card-icon {
+            height: 30px;
+        }
+        #card-element {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .error {
+            color: #ff0000;
+            margin-top: 5px;
+        }
+        .success {
+            color: #008000;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+        
+        footer {
+            background-color: #1e88e5; 
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            width: 100%;
+        }
+        
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        footer a:hover {
+            color: #bbdefb;
+            text-decoration: underline;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .payment-options {
+                margin: 15px 0;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px;
+            }
+            
+            .section-title {
+                font-size: 1.5em;
+            }
+            
+            .slider-container {
+                height: 350px;
+            }
+            
+            .slide-caption {
+                font-size: 1.2em;
+                padding: 15px;
+            }
+            
+            .social-icon {
+                width: 80px;
+            }
+            
+            .icon {
+                width: 50px;
+                height: 50px;
+                padding: 12px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .slider-container {
+                height: 250px;
+            }
+            
+            .slide-caption {
+                font-size: 1em;
+                padding: 10px;
+            }
+            
+            .social-icons-container {
+                gap: 1rem;
+            }
+            
+            .social-icon {
+                width: 70px;
+            }
+            
+            .icon {
+                width: 40px;
+                height: 40px;
+                padding: 10px;
+            }
+            
+            .social-icon span {
+                font-size: 0.9em;
+            }
+            
+            #ContactUs > div {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        
+        window.addEventListener('scroll', function() {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 300)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    });
+</script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo" onclick="window.location.href='#Main'">
+            <img src="images/logo.jpg" class="logo-img">
+            <h1 class="logo-text">Parity Empowerment Initiative</h1>
+        </div>
+        
+        <div class="payment-options">
+            <span class="support-text">Support Our Cause:</span>
+            <div class="card-icons">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard" class="card-icon">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa" class="card-icon">
+            </div>
+   <a href="#ContactUs">
+    <button class="donate-btn">Donate Now</button>
+</a>
+        </div>
+        
+        <nav class="nav-bar">
+            <ul class="nav-links">
+                <li><a href="#Main" class="active">Main</a></li>
+                <li><a href="#Support">Support</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="#ContactUs">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main> <br>
+        <section class="empowerment-slider">
+            <div class="slider-container">
+                <div class="slide">
+                    <img src="images/ab.jpg" alt="Women in leadership">
+                    <div class="slide-caption">Women in Leadership</div>
+                </div>
+                <div class="slide">
+                    <img src="images/girls_malawi.jpeg" alt="Education for girls">
+                    <div class="slide-caption">Education for Girls</div>
+                </div>
+                <div class="slide">
+                    <img src="images/Women-Cross-Border-Traders.webp" alt="Economic empowerment">
+                    <div class="slide-caption">Economic Empowerment</div>
+                </div>
+                <div class="slide">
+                    <img src="images/HF8T4860_Eliza James.jpg.jpg" alt="Breaking barriers">
+                    <div class="slide-caption">Breaking Barriers</div>
+                </div>
+                <div class="slide">
+                    <img src="images/linkage.jpeg" alt="Community support">
+                    <div class="slide-caption">Community Support</div>
+                </div>
+                <div class="slide">
+                    <img src="images/women.jpg" alt="Equal opportunities">
+                    <div class="slide-caption">Equal Opportunities</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="Main">
+            <h2 class="section-title" style="color: white;">Our Mission</h2>
+            <p class="slogan">Every Change Matters</p>
+            
+            <div class="content-box">
+                <p>
+                    PEI seeks to empower diverse women in Uganda by removing economic barriers,
+                    supporting women-led grassroots organizations, fostering sustainable businesses,
+                    and promoting financial independence. We strive to create an inclusive environment
+                    for all women to thrive.
+                </p>
+                
+                <p><b>1. Promoting Gender Equality:</b><br>
+                One of our core objectives is to eliminate gender-based discrimination. Women and girls in many societies still face barriers in education, employment, and leadership roles. We provide scholarships, mentorship programs, and advocate for equal opportunities.</p>
+                
+                <p><b>2. Economic Empowerment:</b><br>
+                We offer vocational training, entrepreneurship programs, and support women-led businesses through microloans and financial literacy programs to bridge economic disparities.</p>
+                
+                <div class="gallery-grid">
+                    <div class="image-card">
+                        <div class="image-container">
+                            <img src="images/Market-women.jpg" alt="Empowerment Workshop">
+                        </div>
+                        <div class="image-info">
+                            <h3 class="image-title">Skills Training</h3>
+                            <p>Our vocational training programs equip women with marketable skills</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <div class="image-container">
+                            <img src="images/girls_malawi.jpeg" alt="Education Program">
+                        </div>
+                        <div class="image-info">
+                            <h3 class="image-title">Education Initiative</h3>
+                            <p>Scholarships for girls in STEM and leadership programs</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <div class="image-container">
+                            <img src="images/slums.jpg" alt="Community Support">
+                        </div>
+                        <div class="image-info">
+                            <h3 class="image-title">Community Outreach</h3>
+                            <p>Building supportive networks for women entrepreneurs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="Support">
+            <h2 class="section-title">How You Can Help</h2>
+            <div class="content-box">
+                <p><b>Sponsor a Woman's Education:</b> Your donation can provide scholarships for girls and women to access quality education and vocational training.</p>
+                
+                <p><b>Support Women-Led Businesses:</b> Contribute to our microloan program that helps women start or expand their businesses.</p>
+                
+                <p><b>Volunteer Your Skills:</b> Share your expertise through our mentorship programs in business, technology, or leadership.</p>
+                
+                <div class="gallery-grid">
+                    <div class="image-card">
+                        <div class="image-container">
+                            <img src="images/istoc.jpg" alt="Donation">
+                        </div>
+                        <div class="image-info">
+                            <h3 class="image-title">Make a Donation</h3>
+                            <p>Every contribution makes a difference in a woman's life</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <div class="image-container">
+                            <img src="images/empowered.jpg" alt="Volunteer">
+                        </div>
+                        <div class="image-info">
+                            <h3 class="image-title">Become a Mentor</h3>
+                            <p>Share your knowledge and experience</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <div class="image-container">
+                            <img src="images/whites in help.jpeg" alt="Partnership">
+                        </div>
+                        <div class="image-info">
+                            <h3 class="image-title">Corporate Partnership</h3>
+                            <p>Join us as a corporate sponsor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="About">
+            <h2 class="section-title">About PEI</h2>
+            <div class="content-box">
+                <p>The Parity Empowerment Initiative (PEI) was founded in 2015 with the mission to create equal opportunities for women in Uganda. What began as a small community project has grown into a nationwide movement impacting thousands of lives annually.</p>
+                
+                <p><b>Our Vision:</b> A world where every woman has equal access to education, economic opportunities, and leadership positions regardless of her background.</p>
+                
+                <p><b>Our Approach:</b> We combine grassroots activism with systemic change, working directly with communities while advocating for policy reforms at national levels.</p>
+                
+                <p><b>Impact to Date:</b><br>
+                - 5,000+ women trained in vocational skills<br>
+                - 1,200+ microloans disbursed<br>
+                - 300+ girls receiving scholarships<br>
+                - 50+ women-led businesses supported</p>
+                
+                <div class="gallery-grid">
+                    <div class="image-card">
+                        <div class="image-container">
+                            <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Team">
+                        </div>
+                        <div class="image-info">
+                            <h3 class="image-title">Our Team</h3>
+                            <p>Dedicated professionals and volunteers</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <div class="image-container">
+                            <img src="images/supportedkids.webp" alt="Awards">
+                        </div>
+                        <div class="image-info">
+                            <h3 class="image-title">Recognition</h3>
+                            <p>Numerous awards for our innovative programs</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <div class="image-container">
+                            <img src="images/team.jpg" alt="Partners">
+                        </div>
+                        <div class="image-info">
+                            <h3 class="image-title">Our Partners</h3>
+                            <p>Collaborating with like-minded organizations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="ContactUs">
+            <h2 class="section-title">Get Involved</h2>
+            <div style="max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                <div class="content-box">
+                    <h3 style="margin-bottom: 20px; color: #1a3a8f; font-size: 1.2em;">Contact Information</h3>
+                    <p><b>Address:</b><br>
+                    Parity Empowerment Initiative<br>
+                    P.O. Box 12345, Kampala, Uganda</p>
+                    
+                    <p><b>Email:</b><br>
+                    commsparityempowermentinitiati@gmail.com</p>
+                    
+                    <p><b>Phone:</b><br>
+                    +256 702351085<br>
+                    +256 747930507
+                </p>
+                    
+                    <p><b>Follow Us:</b></p>
+                    <div class="social-media-section">
+                        <div class="social-icons-container">
+               <a href="https://x.com/parity2025" target="_blank" class="social-icon twitter">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon">
+                                    <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/>
+                                </svg>
+                                <span>Twitter</span>
+                            </a>
+                            
+                            <a href="https://www.tiktok.com/@parityempowerment" target="_blank" class="social-icon tiktok">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon">
+                                    <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+                                </svg>
+                                <span>TikTok</span>
+                            </a>
+                            
+                            <a href="https://ug.linkedin.com/in/parity-empowerment-initiative-254841366" target="_blank" class="social-icon linkedin">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon">
+                                    <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/>
+                                </svg>
+                                <span>LinkedIn</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content-box">
+                    <h3 style="margin-bottom: 20px; color: #1a3a8f; font-size: 1.2em;">Send Us a Message</h3>
+        
+        
+         <form id="donation-form">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="amount">Donation Amount ($)</label>
+            <input type="number" id="amount" name="amount" min="1" step="1" required>
+        </div>
+        
+        <div id="card-element">
+        </div>
+        <div id="card-errors" class="error" role="alert"></div>
+        
+        <div class="payment-options">
+            <span class="support-text">Support Our Cause:</span>
+            <div class="card-icons">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard" class="card-icon">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa" class="card-icon">
+            </div>
+        </div>
+        
+        <button type="submit" id="submit-button">Donate & Send Message</button>
+    </form>
+    
+    <div id="success-message" class="success">
+        Thank you for your donation and message! We've sent a confirmation to your email.
+    </div>
+
+    <script>
+        const stripe = Stripe('pk_test_your_publishable_key_here');
+        const elements = stripe.elements();
+        const card = elements.create('card');
+        card.mount('#card-element');
+        
+        card.addEventListener('change', function(event) {
+            const displayError = document.getElementById('card-errors');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+        
+
+        const form = document.getElementById('donation-form');
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const submitButton = document.getElementById('submit-button');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Processing...';
+            
+
+            const { paymentMethod, error } = await stripe.createPaymentMethod({
+                type: 'card',
+                card: card,
+                billing_details: {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value
+                }
+            });
+            
+            if (error) {
+                document.getElementById('card-errors').textContent = error.message;
+                submitButton.disabled = false;
+                submitButton.textContent = 'Donate & Send Message';
+                return;
+            }
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value,
+                amount: document.getElementById('amount').value,
+                paymentMethodId: paymentMethod.id
+            };
+            
+            try {
+                const response = await fetch('/process-donation', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    form.style.display = 'none';
+                    document.getElementById('success-message').style.display = 'block';
+                } else {
+                    alert('Payment failed: ' + result.error);
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Donate & Send Message';
+                }
+            } catch (err) {
+                console.error('Error:', err);
+                alert('An error occurred. Please try again.');
+                submitButton.disabled = false;
+                submitButton.textContent = 'Donate & Send Message';
+            }
+        });
+        const express = require('express');
+const bodyParser = require('body-parser');
+const stripe = require('stripe')('sk_test_your_secret_key_here');
+const nodemailer = require('nodemailer');
+
+const app = express();
+app.use(bodyParser.json());
+
+// Email transporter configuration
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'commsparityempowermentinitiati@gmail.com',
+        pass: 'your_email_password_or_app_specific_password'
+    }
+});
+
+// Process donation endpoint
+app.post('/process-donation', async (req, res) => {
+    try {
+        const { name, email, message, amount, paymentMethodId } = req.body;
+        
+        // Create payment intent
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: amount * 100, // Convert to cents
+            currency: 'usd',
+            payment_method: paymentMethodId,
+            confirm: true,
+            description: `Donation from ${name}`,
+            receipt_email: email,
+        });
+        
+        // Send confirmation email
+        const mailOptions = {
+            from: 'commsparityempowermentinitiati@gmail.com',
+            to: email,
+            cc: 'commsparityempowermentinitiati@gmail.com',
+            subject: 'Thank you for your donation',
+            text: `Dear ${name},\n\nThank you for your donation of $${amount}.\n\nYour message: ${message}\n\nWe appreciate your support!\n\nBest regards,\nThe Team`,
+            html: `<p>Dear ${name},</p>
+                   <p>Thank you for your donation of $${amount}.</p>
+                   <p>Your message: ${message}</p>
+                   <p>We appreciate your support!</p>
+                   <p>Best regards,<br>The Team</p>`
+        };
+        
+        await transporter.sendMail(mailOptions);
+        
+        res.json({ success: true });
+    } catch (error) {
+        console.error('Error processing donation:', error);
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+    </script>
+</body>
+</html>
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            Designed and powered by <a href="https://linktr.ee/Yanke.e" target="_blank">Yanke.ee</a>
+        </div>
+    </footer>
+</body>
+</html>
+</body></html>
+    
